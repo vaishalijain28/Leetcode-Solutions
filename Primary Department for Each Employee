@@ -1,0 +1,23 @@
+
+Write an SQL query to report all the employees with their primary department. For employees who belong to one department, report their only department.
+
+Return the result table in any order.
+
+The query result format is in the following example.
+
+
+
+(
+    select employee_id , department_id from Employee 
+    where
+    primary_flag='Y'
+)
+Union
+(
+select employee_id, department_id from Employee
+group by employee_id
+ having count(employee_id)=1
+order by null
+)
+ 
+
